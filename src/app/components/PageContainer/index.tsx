@@ -7,7 +7,7 @@ import { TagButton } from '@/components/TagButton';
 import { NYTResponse } from '@/interface/nyt';
 import { useSearchArticlesQuery } from '@/lib/api/articleApi';
 
-const TAGLIST = ['sports', 'news', 'japan'];
+const TAG_LIST = ['sports', 'news', 'japan'];
 
 interface PageContainerProps {
   response: NYTResponse;
@@ -16,7 +16,7 @@ interface PageContainerProps {
 const PageContainer: React.FC<PageContainerProps> = ({ response }) => {
   const [searchQuery, setSearchQuery] = useState({ q: '' });
   const [filterQuery, setFilterQuery] = useState({ fq: '' });
-  const { data, error, isLoading } = useSearchArticlesQuery(
+  const { data, error } = useSearchArticlesQuery(
     { ...searchQuery, ...filterQuery },
     {
       skip: Boolean(!searchQuery && !filterQuery),
@@ -37,12 +37,13 @@ const PageContainer: React.FC<PageContainerProps> = ({ response }) => {
   // }, [searchQuery, filterQuery]);
 
   const displayDocs = data?.response.docs ?? response.docs;
-  console.log(isLoading);
+  // NOTE isLoadingが常にfalseになる
+  // console.log(isLoading);
   return (
-    <Container maxW="4xl">
+    <Container maxW="4xl" py={5}>
       <Heading textAlign="center">The New York Times</Heading>
       <div>
-        {TAGLIST.map((label) => (
+        {TAG_LIST.map((label) => (
           <TagButton
             key={label}
             label={label}
@@ -54,8 +55,7 @@ const PageContainer: React.FC<PageContainerProps> = ({ response }) => {
       <div>
         <SearchBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
       </div>
-      {isLoading && 'Loading...'}
-      {!isLoading && displayDocs && <ArticleList docs={displayDocs} />}
+      {displayDocs && <ArticleList docs={displayDocs} />}
       {error && JSON.stringify(error)}
     </Container>
   );
