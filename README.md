@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# The New York Times
+
+This is a Next.js application that utilizes the power of React, Redux, and Chakra UI to provide an immersive and user-friendly experience. The project aims to showcase the latest news and articles from The New York Times, a renowned news source trusted by millions worldwide.
+
+## Features
+
+- **News Feed**: Browse through the latest news articles from various categories.
+- **Search and Filtering**: Easily search for specific articles and apply filters to refine your results.
+- **Article Details**: Access detailed information about each article, including the full text, multimedia content, and related articles.
+- **Responsive Design**: Enjoy a seamless experience across different devices and screen sizes.
+- **Storybook Integration**: Develop and test UI components in an isolated environment with Storybook.
+
+## Technologies Used
+
+- **Next.js**: A React framework for building server-side rendered and static websites.
+- **React**: A JavaScript library for building user interfaces.
+- **Redux**: A predictable state container for managing application state.
+- **Chakra UI**: A simple and modular component library for building accessible and responsive user interfaces.
+- **Storybook**: A development environment for building UI components in isolation.
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository: `git clone https://github.com/your-repo/the-new-york-times.git`
+2. Install dependencies: `npm install`
+3. Start the development server: `yarn dev`
+4. Open your browser and visit: `http://localhost:3000`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Available Scripts
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `yarn dev`: Starts the development server.
+- `yarn build`: Builds the application for production.
+- `yarn start`: Starts the production server.
+- `yarn lint`: Lints the source code.
+- `yarn lint:fix`: Lints and fixes the source code.
+- `yarn format`: Formats the source code using Prettier.
+- `yarn type-check`: Performs TypeScript type checking.
+- `yarn storybook`: Starts the Storybook development environment.
+- `yarn build-storybook`: Builds the Storybook documentation.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Contributions are welcome! Please follow the guidelines in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the [MIT License](LICENSE).
