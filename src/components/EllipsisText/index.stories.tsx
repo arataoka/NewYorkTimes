@@ -6,13 +6,12 @@ export default {
   title: 'Components/EllipsisText',
   component: EllipsisText,
   args: {
-    title: 'EllipsisText',
-    description: 'This is a Small article card.',
-    imageUrl: 'https://via.placeholder.com/830x450',
+    text: 'EllipsisText',
+    line: 3,
   },
   argTypes: {
-    title: { control: 'text' },
-    description: { control: 'number' },
+    text: { control: 'text' },
+    line: { control: 'number' },
   },
 } as Meta<typeof EllipsisText>;
 

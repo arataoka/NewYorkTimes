@@ -5,7 +5,15 @@ import {
   Input,
   IconButton,
 } from '@chakra-ui/react';
-export const SearchBar = () => {
+
+export interface SearchBarProps {
+  setSearchQuery: React.Dispatch<React.SetStateAction<{ q: string }>>;
+  searchQuery: { q: string };
+}
+export const SearchBar: React.FC<SearchBarProps> = ({
+  setSearchQuery,
+  searchQuery,
+}) => {
   return (
     <InputGroup size="lg" width="full" my={5}>
       <Input
@@ -14,6 +22,8 @@ export const SearchBar = () => {
         placeholder="Search The New York Times"
         variant="filled"
         _placeholder={{ opacity: 1, color: 'gray.500' }}
+        value={searchQuery.q}
+        onChange={(event) => setSearchQuery({ q: event.target.value })}
       />
       <InputRightElement width="4.5rem">
         <IconButton
