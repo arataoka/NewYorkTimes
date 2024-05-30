@@ -1,4 +1,6 @@
+import { ChakraProvider } from '@chakra-ui/react';
 import type { Metadata } from 'next';
+import StoreProvider from '@/app/StoreProvider';
 
 export const metadata: Metadata = {
   title: 'The New York Times API Demo',
@@ -12,7 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ChakraProvider>
+          <StoreProvider>{children}</StoreProvider>
+        </ChakraProvider>
+      </body>
     </html>
   );
 }
