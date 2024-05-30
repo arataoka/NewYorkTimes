@@ -14,14 +14,20 @@ export const LargeArticleCard: React.FC<LargeArticleCardProps> = ({
   description,
   imageUrl,
 }) => (
-  <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
+  <Box
+    borderWidth="1px"
+    borderRadius="lg"
+    overflow="hidden"
+    height="100%"
+    bgColor="black"
+  >
     <Flex
       justify="center"
       position="relative"
       alignItems="center"
       height="100%"
     >
-      <Img src={imageUrl} alt={title} objectFit="cover" />
+      <Img src={imageUrl} alt={title} objectFit="cover" maxHeight="600px" />
       <Box
         p="6"
         position="absolute"

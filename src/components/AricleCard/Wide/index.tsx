@@ -21,8 +21,8 @@ export const WideArticleCard: React.FC<WideArticleCardProps> = ({
       </Heading>
       <EllipsisText text={description} line={3}></EllipsisText>
     </Box>
-    <Box flex={1}>
+    <Flex flex={1} alignItems="center" bg="black">
       <Img src={imageUrl} alt={title} objectFit="cover" />
-    </Box>
+    </Flex>
   </Flex>
 );
