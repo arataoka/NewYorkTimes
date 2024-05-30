@@ -14,7 +14,7 @@ export const SmallArticleCard: React.FC<SmallArticleCardProps> = ({
   description,
   imageUrl,
 }) => (
-  <Box>
+  <Box height="100%" borderWidth="1px" borderRadius="lg">
     <Img src={imageUrl} alt={title} objectFit="cover" />
     <Box p={2}>
       <Heading fontSize="xl" mb="2">
