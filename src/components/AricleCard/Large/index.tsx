@@ -1,0 +1,41 @@
+import { Box, Heading, Flex } from '@chakra-ui/react';
+import { Img } from '@chakra-ui/react';
+import React from 'react';
+import { EllipsisText } from '../../EllipsisText';
+
+interface LargeArticleCardProps {
+  title: string;
+  description: string;
+  imageUrl: string;
+}
+
+export const LargeArticleCard: React.FC<LargeArticleCardProps> = ({
+  title,
+  description,
+  imageUrl,
+}) => (
+  <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
+    <Flex
+      justify="center"
+      position="relative"
+      alignItems="center"
+      height="100%"
+    >
+      <Img src={imageUrl} alt={title} objectFit="cover" />
+      <Box
+        p="6"
+        position="absolute"
+        left="0"
+        bottom="0"
+        bgColor="rgba(0,0,0,0.5)"
+        color="#fff"
+        width="100%"
+      >
+        <Heading fontSize="xl" mb="2">
+          <EllipsisText text={title} line={3}></EllipsisText>
+        </Heading>
+        <EllipsisText text={description} line={3}></EllipsisText>
+      </Box>
+    </Flex>
+  </Box>
+);
