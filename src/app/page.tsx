@@ -14,7 +14,6 @@ export default async function Home({
   );
   const data = await fetchResponse.json();
   const { response } = data as NYTApiResponse;
-  console.log(data);
   return (
     <main>
       {data.status === 'OK' ? (

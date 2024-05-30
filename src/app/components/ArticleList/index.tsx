@@ -30,47 +30,55 @@ export const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
         gap={2}
         mb={4}
       >
-        <Box gridRow="1 / 3" gridColumn="1 / 8">
-          <LargeArticleCard
-            url={firstDoc.web_url}
-            title={firstDoc.abstract}
-            description={firstDoc.lead_paragraph}
-            imageUrl={getImageUrl(firstDoc.multimedia[0]?.url)}
-          ></LargeArticleCard>
-        </Box>
+        {firstDoc && (
+          <Box gridRow="1 / 3" gridColumn="1 / 8">
+            <LargeArticleCard
+              url={firstDoc.web_url}
+              title={firstDoc.abstract}
+              description={firstDoc.lead_paragraph}
+              imageUrl={getImageUrl(firstDoc.multimedia[0]?.url)}
+            ></LargeArticleCard>
+          </Box>
+        )}
 
-        <Box gridRow="3 / 4" gridColumn="1 / 6">
-          <MediumArticleCard
-            url={firstDoc.web_url}
-            title={secondDoc.abstract}
-            description={secondDoc.lead_paragraph}
-            imageUrl={getImageUrl(secondDoc.multimedia[0]?.url)}
-          ></MediumArticleCard>
-        </Box>
+        {secondDoc && (
+          <Box gridRow="3 / 4" gridColumn="1 / 6">
+            <MediumArticleCard
+              url={secondDoc.web_url}
+              title={secondDoc.abstract}
+              description={secondDoc.lead_paragraph}
+              imageUrl={getImageUrl(secondDoc.multimedia[0]?.url)}
+            ></MediumArticleCard>
+          </Box>
+        )}
 
-        <Box gridRow="4 / 5" gridColumn="1 / 6">
-          <MediumArticleCard
-            url={firstDoc.web_url}
-            title={thirdDoc.abstract}
-            description={thirdDoc.lead_paragraph}
-            imageUrl={getImageUrl(thirdDoc.multimedia[0]?.url)}
-          ></MediumArticleCard>
-        </Box>
+        {thirdDoc && (
+          <Box gridRow="4 / 5" gridColumn="1 / 6">
+            <MediumArticleCard
+              url={thirdDoc.web_url}
+              title={thirdDoc.abstract}
+              description={thirdDoc.lead_paragraph}
+              imageUrl={getImageUrl(thirdDoc.multimedia[0]?.url)}
+            ></MediumArticleCard>
+          </Box>
+        )}
 
-        <Box gridRow="3 / 5" gridColumn="6 / 8">
-          <SmallArticleCard
-            url={firstDoc.web_url}
-            title={forthDoc.abstract}
-            description={forthDoc.lead_paragraph}
-            imageUrl={getImageUrl(forthDoc.multimedia[0]?.url)}
-          ></SmallArticleCard>
-        </Box>
+        {forthDoc && (
+          <Box gridRow="3 / 5" gridColumn="6 / 8">
+            <SmallArticleCard
+              url={forthDoc.web_url}
+              title={forthDoc.abstract}
+              description={forthDoc.lead_paragraph}
+              imageUrl={getImageUrl(forthDoc.multimedia[0]?.url)}
+            ></SmallArticleCard>
+          </Box>
+        )}
       </Grid>
       <List>
         {restDocs.map((doc, index) => (
           <ListItem key={index} mb={2}>
             <WideArticleCard
-              url={firstDoc.web_url}
+              url={doc.web_url}
               title={doc.abstract}
               description={doc.lead_paragraph}
               imageUrl={getImageUrl(doc.multimedia[0]?.url)}
