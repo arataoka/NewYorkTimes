@@ -1,5 +1,6 @@
 import { Box, Heading } from '@chakra-ui/react';
 import { Img } from '@chakra-ui/react';
+import Link from 'next/link';
 import React from 'react';
 import { EllipsisText } from '../../EllipsisText';
 
@@ -7,20 +8,24 @@ interface SmallArticleCardProps {
   title: string;
   description: string;
   imageUrl: string;
+  url: string;
 }
 
 export const SmallArticleCard: React.FC<SmallArticleCardProps> = ({
   title,
   description,
   imageUrl,
+  url,
 }) => (
-  <Box height="100%" borderWidth="1px" borderRadius="lg">
-    <Img src={imageUrl} alt={title} objectFit="cover" />
-    <Box p={2}>
-      <Heading fontSize="xl" mb="2">
-        <EllipsisText text={title} line={7}></EllipsisText>
-      </Heading>
-      <EllipsisText text={description} line={3}></EllipsisText>
+  <Link href={url}>
+    <Box height="100%" borderWidth="1px" borderRadius="lg">
+      <Img src={imageUrl} alt={title} objectFit="cover" />
+      <Box p={2}>
+        <Heading fontSize="xl" mb="2">
+          <EllipsisText text={title} line={7}></EllipsisText>
+        </Heading>
+        <EllipsisText text={description} line={3}></EllipsisText>
+      </Box>
     </Box>
-  </Box>
+  </Link>
 );
