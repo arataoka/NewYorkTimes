@@ -1,7 +1,29 @@
 import React from 'react';
 import { TagButton } from '@/components/TagButton';
 
-const TAG_LIST = ['sports', 'news', 'japan'] as const;
+const TAG_LIST = [
+  'sports',
+  'news',
+  'technology',
+  'health',
+  'finance',
+  'education',
+  'travel',
+  'entertainment',
+  'politics',
+  'culture',
+  'science',
+  'environment',
+  'business',
+  'art',
+  'lifestyle',
+  'food',
+  'game',
+  'technology_trends',
+  'automobile',
+  'fashion',
+  'movie',
+] as const;
 
 interface FilterTagListProps {
   filterQuery: string;

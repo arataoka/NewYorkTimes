@@ -1,5 +1,12 @@
 'use client';
-import { Box, Container, Heading, Skeleton, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Skeleton,
+  Text,
+} from '@chakra-ui/react';
 import React, { useMemo, useState } from 'react';
 import { MemorizedArticleList } from '@/app/components/ArticleList';
 import { MemorizedFilterTagList } from '@/app/components/FilterTagList';
@@ -16,33 +23,34 @@ const PageContainer: React.FC<PageContainerProps> = ({ response }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterQuery, setFilterQuery] = useState('');
   const debouncedSearchQuery = useDebouncedValue(searchQuery, 300);
-  const debouncedFilterQuery = useDebouncedValue(filterQuery, 300);
 
   const searchParams = useMemo(
     () => ({
       q: debouncedSearchQuery,
-      fq: debouncedFilterQuery,
+      fq: filterQuery,
     }),
-    [debouncedSearchQuery, debouncedFilterQuery]
+    [debouncedSearchQuery, filterQuery]
   );
 
   const shouldSkip = useMemo(
-    () => !debouncedSearchQuery && !debouncedFilterQuery,
-    [debouncedSearchQuery, debouncedFilterQuery]
+    () => !debouncedSearchQuery && !filterQuery,
+    [debouncedSearchQuery, filterQuery]
   );
 
   const { data, error, isFetching } = useSearchArticlesQuery(searchParams, {
     skip: shouldSkip,
   });
   const displayDocs = data?.response.docs ?? response.docs;
-  const isLoaded = !data?.response.docs || !isFetching || !error;
+  const isLoaded = !data?.response.docs || !isFetching;
   return (
     <Container maxW="4xl" py={5}>
       <Heading textAlign="center">The New York Times</Heading>
-      <MemorizedFilterTagList
-        filterQuery={filterQuery}
-        setFilterQuery={setFilterQuery}
-      />
+      <Flex overflowX="scroll" flexWrap="wrap" justifyContent="center">
+        <MemorizedFilterTagList
+          filterQuery={filterQuery}
+          setFilterQuery={setFilterQuery}
+        />
+      </Flex>
       <Box>
         <MemorizedSearchBar
           setSearchQuery={setSearchQuery}
