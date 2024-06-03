@@ -1,64 +1,57 @@
 'use client';
-import { Container, Heading } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import { ArticleList } from '@/app/components/ArticleList';
-import { SearchBar } from '@/components/SearchBar';
-import { TagButton } from '@/components/TagButton';
+import { Box, Container, Heading } from '@chakra-ui/react';
+import React, { useMemo, useState } from 'react';
+import { MemorizedArticleList } from '@/app/components/ArticleList';
+import { MemorizedFilterTagList } from '@/app/components/FilterTagList';
+import { MemorizedSearchBar } from '@/components/SearchBar';
+import { useDebouncedValue } from '@/hooks/useDebouncedValue';
 import { NYTResponse } from '@/interface/nyt';
 import { useSearchArticlesQuery } from '@/lib/api/articleApi';
-
-const TAG_LIST = ['sports', 'news', 'japan'];
 
 interface PageContainerProps {
   response: NYTResponse;
 }
 
 const PageContainer: React.FC<PageContainerProps> = ({ response }) => {
-  const [searchQuery, setSearchQuery] = useState({ q: '' });
-  const [filterQuery, setFilterQuery] = useState({ fq: '' });
-  const { data, error } = useSearchArticlesQuery(
-    { ...searchQuery, ...filterQuery },
-    {
-      skip: Boolean(!searchQuery && !filterQuery),
-    }
-  );
-  // const router = useRouter();
-  // NOTE: next/navigation では shallow routingができない
-  // const params = Object.fromEntries(useSearchParams().entries());
-  // const pathname = usePathname();
-  // useEffect(() => {
-  //   const updatedQuery = {
-  //     ...params,
-  //     ...(searchQuery.q && { q: searchQuery.q }),
-  //     ...(filterQuery.fq && { fq: filterQuery.fq }),
-  //   };
-  // const queryString = new URLSearchParams(updatedQuery).toString();
-  // router.push(`${pathname}?${queryString}`);
-  // }, [searchQuery, filterQuery]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterQuery, setFilterQuery] = useState('');
+  const debouncedSearchQuery = useDebouncedValue(searchQuery, 300);
+  const debouncedFilterQuery = useDebouncedValue(filterQuery, 300);
 
+  const searchParams = useMemo(
+    () => ({
+      q: debouncedSearchQuery,
+      fq: debouncedFilterQuery,
+    }),
+    [debouncedSearchQuery, debouncedFilterQuery]
+  );
+
+  const shouldSkip = useMemo(
+    () => !debouncedSearchQuery && !debouncedFilterQuery,
+    [debouncedSearchQuery, debouncedFilterQuery]
+  );
+
+  const { data, error, isFetching } = useSearchArticlesQuery(searchParams, {
+    skip: shouldSkip,
+  });
   const displayDocs = data?.response.docs ?? response.docs;
-  // NOTE isLoadingが常にfalseになる
-  // console.log(isLoading);
   return (
     <Container maxW="4xl" py={5}>
       <Heading textAlign="center">The New York Times</Heading>
-      <div>
-        {TAG_LIST.map((label) => (
-          <TagButton
-            key={label}
-            label={label}
-            selected={label === filterQuery.fq}
-            onClick={() => setFilterQuery({ fq: `${label}` })}
-          />
-        ))}
-      </div>
-      <div>
-        <SearchBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-      </div>
-      {displayDocs && <ArticleList docs={displayDocs} />}
+      <MemorizedFilterTagList
+        filterQuery={filterQuery}
+        setFilterQuery={setFilterQuery}
+      />
+      <Box>
+        <MemorizedSearchBar
+          setSearchQuery={setSearchQuery}
+          searchQuery={searchQuery}
+        />
+      </Box>
+      {isFetching ? 'Loading' : <MemorizedArticleList docs={displayDocs} />}
       {error && JSON.stringify(error)}
     </Container>
   );
 };
 
-export default PageContainer;
+export const MemorizedPageContainer = React.memo(PageContainer);
