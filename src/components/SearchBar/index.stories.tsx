@@ -1,20 +1,20 @@
 import { Meta } from '@storybook/react';
 import React, { ComponentProps } from 'react';
-import { SearchBar } from './index';
+import { MemorizedSearchBar } from './index';
 
 export default {
-  title: 'Components/SearchBar',
-  component: SearchBar,
+  title: 'Components/MemorizedSearchBar',
+  component: MemorizedSearchBar,
   args: {
     setSearchQuery: () => ({}),
-    searchQuery: { q: '' },
+    searchQuery: '',
   },
-} as Meta<typeof SearchBar>;
+} as Meta<typeof MemorizedSearchBar>;
 
 export const Default: (
-  args: React.ComponentProps<typeof SearchBar>
-) => React.JSX.Element = (args: ComponentProps<typeof SearchBar>) => (
+  args: React.ComponentProps<typeof MemorizedSearchBar>
+) => React.JSX.Element = (args: ComponentProps<typeof MemorizedSearchBar>) => (
   <div style={{ width: '200px' }}>
-    <SearchBar {...args} />
+    <MemorizedSearchBar {...args} />
   </div>
 );

@@ -5,12 +5,13 @@ import {
   Input,
   IconButton,
 } from '@chakra-ui/react';
+import React from 'react';
 
 export interface SearchBarProps {
-  setSearchQuery: React.Dispatch<React.SetStateAction<{ q: string }>>;
-  searchQuery: { q: string };
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  searchQuery: string;
 }
-export const SearchBar: React.FC<SearchBarProps> = ({
+const SearchBar: React.FC<SearchBarProps> = ({
   setSearchQuery,
   searchQuery,
 }) => {
@@ -22,8 +23,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         placeholder="Search The New York Times"
         variant="filled"
         _placeholder={{ opacity: 1, color: 'gray.500' }}
-        value={searchQuery.q}
-        onChange={(event) => setSearchQuery({ q: event.target.value })}
+        value={searchQuery}
+        onChange={(event) => setSearchQuery(event.target.value)}
       />
       <InputRightElement width="4.5rem">
         <IconButton
@@ -37,3 +38,5 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     </InputGroup>
   );
 };
+
+export const MemorizedSearchBar = React.memo(SearchBar);

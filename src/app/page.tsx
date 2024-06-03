@@ -1,4 +1,4 @@
-import PageContainer from '@/app/components/PageContainer';
+import { MemorizedPageContainer } from '@/app/components/PageContainer';
 import { NYTApiResponse } from '@/interface/nyt';
 
 export default async function Home({
@@ -17,7 +17,7 @@ export default async function Home({
   return (
     <main>
       {data.status === 'OK' ? (
-        <PageContainer response={response}></PageContainer>
+        <MemorizedPageContainer response={response}></MemorizedPageContainer>
       ) : (
         <div>{data.status}</div>
       )}

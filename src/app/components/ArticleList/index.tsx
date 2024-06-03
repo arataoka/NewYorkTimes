@@ -14,7 +14,7 @@ interface ArticleListProps {
   docs: NYTResponse['docs'];
 }
 
-export const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
+const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
   const [firstDoc, secondDoc, thirdDoc, forthDoc, ...restDocs] = docs.filter(
     ({ abstract, lead_paragraph, web_url }) =>
       Boolean(abstract && lead_paragraph && web_url)
@@ -89,3 +89,5 @@ export const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
     </>
   );
 };
+
+export const MemorizedArticleList = React.memo(ArticleList);
