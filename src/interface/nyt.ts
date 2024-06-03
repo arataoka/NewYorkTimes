@@ -94,3 +94,20 @@ interface Meta {
   offset: number;
   time: number;
 }
+
+// エラー詳細の型
+interface RateLimitErrorDetail {
+  errorcode: string;
+}
+
+interface RateLimitFault {
+  faultstring: string;
+  detail: RateLimitErrorDetail;
+}
+
+export interface RateLimitErrorResponse {
+  status: number;
+  data: {
+    fault: RateLimitFault;
+  };
+}

@@ -1,5 +1,10 @@
-// services/articlesApi.js
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { NYTApiResponse, RateLimitErrorResponse } from '@/interface/nyt';
+
+interface ArticlesQuery {
+  q?: string;
+  fq?: string;
+}
 
 const NYT_API_KEY = process.env.NEXT_PUBLIC_NYT_API_KEY;
 
@@ -9,7 +14,7 @@ export const articlesApi = createApi({
     baseUrl: 'https://api.nytimes.com/svc/search/v2/',
   }),
   endpoints: (builder) => ({
-    searchArticles: builder.query({
+    searchArticles: builder.query<NYTApiResponse, ArticlesQuery>({
       query: ({ q, fq }) => ({
         url: 'articlesearch.json',
         params: {
@@ -18,6 +23,14 @@ export const articlesApi = createApi({
           fq,
         },
       }),
+      transformErrorResponse: (error: RateLimitErrorResponse) => {
+        return {
+          message:
+            error.status === 429
+              ? 'Too Many Requests. Please try it later.'
+              : `An unknown error occurred. Status Code : ${error.status}`,
+        };
+      },
     }),
   }),
 });
