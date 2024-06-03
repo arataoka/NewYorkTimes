@@ -16,8 +16,8 @@ interface ArticleListProps {
 
 const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
   const [firstDoc, secondDoc, thirdDoc, forthDoc, ...restDocs] = docs.filter(
-    ({ abstract, lead_paragraph, web_url }) =>
-      Boolean(abstract && lead_paragraph && web_url)
+    ({ headline: { main }, lead_paragraph, web_url }) =>
+      Boolean(main && lead_paragraph && web_url)
   );
   const getImageUrl = (url: string) =>
     url ? `https://nytimes.com/` + url : DUMMY_IMAGE_URL;
@@ -34,7 +34,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
           <Box gridRow="1 / 3" gridColumn="1 / 8">
             <LargeArticleCard
               url={firstDoc.web_url}
-              title={firstDoc.abstract}
+              title={firstDoc.headline.main}
               description={firstDoc.lead_paragraph}
               imageUrl={getImageUrl(firstDoc.multimedia[0]?.url)}
             ></LargeArticleCard>
@@ -45,7 +45,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
           <Box gridRow="3 / 4" gridColumn="1 / 6">
             <MediumArticleCard
               url={secondDoc.web_url}
-              title={secondDoc.abstract}
+              title={secondDoc.headline.main}
               description={secondDoc.lead_paragraph}
               imageUrl={getImageUrl(secondDoc.multimedia[0]?.url)}
             ></MediumArticleCard>
@@ -56,7 +56,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
           <Box gridRow="4 / 5" gridColumn="1 / 6">
             <MediumArticleCard
               url={thirdDoc.web_url}
-              title={thirdDoc.abstract}
+              title={thirdDoc.headline.main}
               description={thirdDoc.lead_paragraph}
               imageUrl={getImageUrl(thirdDoc.multimedia[0]?.url)}
             ></MediumArticleCard>
@@ -67,7 +67,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
           <Box gridRow="3 / 5" gridColumn="6 / 8">
             <SmallArticleCard
               url={forthDoc.web_url}
-              title={forthDoc.abstract}
+              title={forthDoc.headline.main}
               description={forthDoc.lead_paragraph}
               imageUrl={getImageUrl(forthDoc.multimedia[0]?.url)}
             ></SmallArticleCard>
@@ -79,7 +79,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
           <ListItem key={index} mb={2}>
             <WideArticleCard
               url={doc.web_url}
-              title={doc.abstract}
+              title={doc.headline.main}
               description={doc.lead_paragraph}
               imageUrl={getImageUrl(doc.multimedia[0]?.url)}
             ></WideArticleCard>
