@@ -16,7 +16,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   searchQuery,
 }) => {
   return (
-    <InputGroup size="lg" width="full" my={5}>
+    <InputGroup size="lg" width="full">
       <Input
         pr="4.5rem"
         type="text"

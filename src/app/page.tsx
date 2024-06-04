@@ -16,11 +16,7 @@ export default async function Home({
   const { response } = data as NYTApiResponse;
   return (
     <main>
-      {data.status === 'OK' ? (
-        <MemorizedPageContainer response={response}></MemorizedPageContainer>
-      ) : (
-        <div>{data.status}</div>
-      )}
+      <MemorizedPageContainer response={response}></MemorizedPageContainer>
     </main>
   );
 }
