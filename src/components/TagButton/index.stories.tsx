@@ -6,7 +6,7 @@ export default {
   title: 'Components/TagButton',
   component: TagButton,
   args: {
-    label: '',
+    label: 'sports',
     onClick: () => ({}),
     selected: false,
   },
@@ -21,5 +21,6 @@ export const Default: (
 ) => React.JSX.Element = (args: ComponentProps<typeof TagButton>) => (
   <div style={{ width: '200px' }}>
     <TagButton {...args} />
+    <TagButton {...args} selected />
   </div>
 );

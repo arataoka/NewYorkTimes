@@ -1,5 +1,5 @@
+import path from 'path';
 import type { StorybookConfig } from '@storybook/nextjs';
-const path = require('path');
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -11,11 +11,16 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
   ],
   webpackFinal: async (baseConfig) => {
-    // @ts-ignore
-    baseConfig.resolve?.modules = [
-      ...(baseConfig.resolve?.modules || []),
-      path.resolve(__dirname, '../'),
-    ];
+    if (baseConfig.resolve && baseConfig.resolve.modules) {
+      baseConfig.resolve.modules = [
+        ...baseConfig.resolve.modules,
+        path.resolve(__dirname, '../'),
+      ];
+    } else {
+      baseConfig.resolve = {
+        modules: [path.resolve(__dirname, '../')],
+      };
+    }
     return baseConfig;
   },
   framework: {
@@ -24,4 +29,5 @@ const config: StorybookConfig = {
   },
   staticDirs: ['../public'],
 };
+
 export default config;

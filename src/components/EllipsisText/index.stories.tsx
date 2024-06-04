@@ -6,7 +6,7 @@ export default {
   title: 'Components/EllipsisText',
   component: EllipsisText,
   args: {
-    text: 'EllipsisText',
+    text: 'EllipsisTextEllipsisTextEllipsisTextEllipsisTextEEllipsisTextEllipsisTextEllipsisTextEllipsisTextE',
     line: 3,
   },
   argTypes: {
@@ -18,7 +18,7 @@ export default {
 export const Default: (
   args: React.ComponentProps<typeof EllipsisText>
 ) => React.JSX.Element = (args: ComponentProps<typeof EllipsisText>) => (
-  <div style={{ width: '200px' }}>
+  <div style={{ width: '200px', border: '1px solid red', padding: '10px' }}>
     <EllipsisText {...args} />
   </div>
 );

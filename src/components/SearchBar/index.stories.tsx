@@ -14,7 +14,7 @@ export default {
 export const Default: (
   args: React.ComponentProps<typeof MemorizedSearchBar>
 ) => React.JSX.Element = (args: ComponentProps<typeof MemorizedSearchBar>) => (
-  <div style={{ width: '200px' }}>
+  <div style={{ width: '500px' }}>
     <MemorizedSearchBar {...args} />
   </div>
 );

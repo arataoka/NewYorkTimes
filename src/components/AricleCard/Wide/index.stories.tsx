@@ -9,6 +9,7 @@ export default {
     title: 'WideArticleCard',
     description: 'This is a large article card.',
     imageUrl: 'https://via.placeholder.com/830x450',
+    url: '#',
   },
   argTypes: {
     title: { control: 'text' },
