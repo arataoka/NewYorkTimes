@@ -6,17 +6,19 @@ interface ArticlesQuery {
   fq?: string;
 }
 
-const NYT_API_KEY = process.env.NEXT_PUBLIC_NYT_API_KEY;
+export const NYT_API_KEY = process.env.NEXT_PUBLIC_NYT_API_KEY;
+export const BASE_URL = 'https://api.nytimes.com/svc/search/v2/';
+export const API_PATH = 'articlesearch.json';
 
 export const articlesApi = createApi({
   reducerPath: 'articlesApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.nytimes.com/svc/search/v2/',
+    baseUrl: BASE_URL,
   }),
   endpoints: (builder) => ({
     searchArticles: builder.query<NYTApiResponse, ArticlesQuery>({
       query: ({ q, fq }) => ({
-        url: 'articlesearch.json',
+        url: API_PATH,
         params: {
           'api-key': NYT_API_KEY,
           q,
