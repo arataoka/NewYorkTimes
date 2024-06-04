@@ -3,13 +3,9 @@ import { Img } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
 import { EllipsisText } from '../../EllipsisText';
+import { BaseArticleCardProps } from '@/components/AricleCard/interface';
 
-interface LargeArticleCardProps {
-  title: string;
-  description: string;
-  imageUrl: string;
-  url: string;
-}
+interface LargeArticleCardProps extends BaseArticleCardProps {}
 
 export const LargeArticleCard: React.FC<LargeArticleCardProps> = ({
   title,
@@ -41,7 +37,7 @@ export const LargeArticleCard: React.FC<LargeArticleCardProps> = ({
           color="#fff"
           width="100%"
         >
-          <Heading fontSize="xl" mb="2">
+          <Heading fontSize="3xl" mb="2">
             <EllipsisText text={title} line={3}></EllipsisText>
           </Heading>
           <EllipsisText text={description} line={3}></EllipsisText>

@@ -3,13 +3,9 @@ import { Img } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
 import { EllipsisText } from '../../EllipsisText';
+import { BaseArticleCardProps } from '@/components/AricleCard/interface';
 
-interface SmallArticleCardProps {
-  title: string;
-  description: string;
-  imageUrl: string;
-  url: string;
-}
+interface SmallArticleCardProps extends BaseArticleCardProps {}
 
 export const SmallArticleCard: React.FC<SmallArticleCardProps> = ({
   title,
