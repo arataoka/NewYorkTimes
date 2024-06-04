@@ -9,7 +9,7 @@ export interface NYTResponse {
   meta: Meta;
 }
 
-interface Article {
+export interface Article {
   abstract: string;
   web_url: string;
   snippet: string;
