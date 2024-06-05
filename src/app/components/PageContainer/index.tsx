@@ -37,7 +37,7 @@ const PageContainer: React.FC<PageContainerProps> = ({ response }) => {
       <Heading as="h1" textAlign="center" mb={2}>
         The New York Times
       </Heading>
-      <Flex overflowX="scroll" flexWrap="wrap" justifyContent="center">
+      <Flex flexWrap="wrap" justifyContent="center">
         <MemorizedFilterTagList
           filterQuery={filterQuery}
           setFilterQuery={setFilterQuery}

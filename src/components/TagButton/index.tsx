@@ -21,6 +21,7 @@ export const TagButton: React.FC<TagButtonProps> = ({
       onClick={() => onClick(label)}
       size="sm"
       m={1}
+      fontFamily="sans-serif"
     >
       {label}
     </Button>
