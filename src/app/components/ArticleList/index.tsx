@@ -75,7 +75,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
           </MotionBox>
         )}
       </Grid>
-      <List>
+      <List px={{ base: 2, lg: 0 }}>
         {restDocs.map((doc, index) => (
           <ListItem key={index} mb={8}>
             <MotionBox {...fadeInOut(3 + index)}>

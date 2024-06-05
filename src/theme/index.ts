@@ -6,6 +6,17 @@ export const theme = extendTheme({
     base: '0em',
     lg: '62em',
   },
+  styles: {
+    global: {
+      '@media (max-width: 62em)': {
+        '*': {
+          _hover: {
+            transform: 'none !important',
+          },
+        },
+      },
+    },
+  },
   fonts: {
     heading: `Georgia, serif`,
     body: `"Gill Sans", sans-serif`,
