@@ -29,7 +29,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
 
   return (
     <>
-      <Grid gap={4} mb={4}>
+      <Grid gap={4} mb={4} minHeight="100vh">
         {firstDoc && (
           <MotionBox {...fadeInOut(0)} gridRow="1 / 3" gridColumn="1 / 8">
             <LargeArticleCard {...createDocProps(firstDoc)}></LargeArticleCard>
