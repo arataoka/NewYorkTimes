@@ -15,6 +15,8 @@ export default async function Home({
   );
   const data = await fetchResponse.json();
   const { response } = data as NYTApiResponse;
+  if (!response?.docs)
+    return 'Something went wrong. Please try it again later.';
   return (
     <main>
       <MemorizedPageContainer response={response}></MemorizedPageContainer>
