@@ -23,6 +23,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         placeholder="Search The New York Times"
         variant="filled"
         _placeholder={{ opacity: 1, color: 'gray.500' }}
+        _focus={{ background: 'white' }}
         value={searchQuery}
         onChange={(event) => setSearchQuery(event.target.value)}
       />
