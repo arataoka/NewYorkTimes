@@ -33,29 +33,33 @@ const PageContainer: React.FC<PageContainerProps> = ({ response }) => {
     initialResponse: response,
   });
   return (
-    <Container maxW="4xl" py={5}>
-      <Heading textAlign="center">The New York Times</Heading>
+    <Container maxW="4xl" py={5} px={0} backgroundColor="gray.50">
+      <Heading as="h1" textAlign="center" mb={2}>
+        The New York Times
+      </Heading>
       <Flex overflowX="scroll" flexWrap="wrap" justifyContent="center">
         <MemorizedFilterTagList
           filterQuery={filterQuery}
           setFilterQuery={setFilterQuery}
         />
       </Flex>
-      <Box my={5}>
+      <Box m={5}>
         <MemorizedSearchBar
           setSearchQuery={setSearchQuery}
           searchQuery={searchQuery}
         />
       </Box>
-      {errorMessage ? (
-        <Text color="red">{errorMessage}</Text>
-      ) : (
-        <Box>
-          <Skeleton isLoaded={isLoaded} fitContent minHeight="300px" mb={5}>
-            <MemorizedArticleList docs={displayDocs} />
-          </Skeleton>
-        </Box>
-      )}
+      <Box p={{ base: 0, lg: 8 }}>
+        {errorMessage ? (
+          <Text color="red">{errorMessage}</Text>
+        ) : (
+          <Box>
+            <Skeleton isLoaded={isLoaded} fitContent minHeight="300px" mb={5}>
+              <MemorizedArticleList docs={displayDocs} />
+            </Skeleton>
+          </Box>
+        )}
+      </Box>
     </Container>
   );
 };

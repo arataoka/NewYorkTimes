@@ -29,11 +29,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
 
   return (
     <>
-      <Grid
-        templateColumns="repeat(7, 1fr)"
-        templateRows="repeat(4, 1fr)"
-        gap={2}
-      >
+      <Grid gap={4} mb={4}>
         {firstDoc && (
           <MotionBox {...fadeInOut(0)} gridRow="1 / 3" gridColumn="1 / 8">
             <LargeArticleCard {...createDocProps(firstDoc)}></LargeArticleCard>
@@ -41,7 +37,11 @@ const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
         )}
 
         {secondDoc && (
-          <MotionBox {...fadeInOut(1)} gridRow="3 / 4" gridColumn="1 / 6">
+          <MotionBox
+            {...fadeInOut(1)}
+            gridRow="3 / 4"
+            gridColumn={{ base: '1 / 8', lg: '1 / 6' }}
+          >
             <MediumArticleCard
               {...createDocProps(secondDoc)}
             ></MediumArticleCard>
@@ -49,7 +49,11 @@ const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
         )}
 
         {thirdDoc && (
-          <MotionBox {...fadeInOut(2)} gridRow="4 / 5" gridColumn="1 / 6">
+          <MotionBox
+            {...fadeInOut(2)}
+            gridRow="4 / 5"
+            gridColumn={{ base: '1 / 8', lg: '1 / 6' }}
+          >
             <MediumArticleCard
               {...createDocProps(thirdDoc)}
             ></MediumArticleCard>
@@ -57,14 +61,18 @@ const ArticleList: React.FC<ArticleListProps> = ({ docs }) => {
         )}
 
         {forthDoc && (
-          <MotionBox {...fadeInOut(3)} gridRow="3 / 5" gridColumn="6 / 8">
+          <MotionBox
+            {...fadeInOut(3)}
+            gridRow={{ base: '5 / 6', lg: '3 / 5' }}
+            gridColumn={{ base: '1 / 8', lg: '6 / 8' }}
+          >
             <SmallArticleCard {...createDocProps(forthDoc)}></SmallArticleCard>
           </MotionBox>
         )}
       </Grid>
       <List>
         {restDocs.map((doc, index) => (
-          <ListItem key={index} mb={2}>
+          <ListItem key={index} mb={8}>
             <MotionBox {...fadeInOut(3 + index)}>
               <WideArticleCard {...createDocProps(doc)}></WideArticleCard>
             </MotionBox>
