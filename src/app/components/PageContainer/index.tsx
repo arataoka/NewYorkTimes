@@ -43,7 +43,13 @@ const PageContainer: React.FC<PageContainerProps> = ({ response }) => {
           setFilterQuery={setFilterQuery}
         />
       </Flex>
-      <Box p={5} position="sticky" top="0" zIndex={999}>
+      <Box
+        p={5}
+        position="sticky"
+        top="0"
+        zIndex={999}
+        _focus={{ backgroundColor: 'white' }}
+      >
         <MemorizedSearchBar
           setSearchQuery={setSearchQuery}
           searchQuery={searchQuery}
