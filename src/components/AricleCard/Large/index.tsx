@@ -20,7 +20,6 @@ export const LargeArticleCard: React.FC<LargeArticleCardProps> = ({
     position="relative"
     alignItems="center"
     height="100%"
-    min-height="400px"
   >
     <Img
       src={imageUrl}
