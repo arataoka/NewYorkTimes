@@ -1,4 +1,4 @@
-import { MemorizedPageContainer } from '@/app/components/PageContainer';
+import { MemorizedPageContainer } from '@/app/container';
 import { NYTApiResponse } from '@/interface/nyt';
 import { API_PATH, BASE_URL } from '@/lib/api/articleApi';
 

@@ -10,8 +10,8 @@ import {
 import React from 'react';
 import { MemorizedArticleList } from '@/app/components/ArticleList';
 import { MemorizedFilterTagList } from '@/app/components/FilterTagList';
-import { useArticlesApi } from '@/app/components/PageContainer/hooks/useArticlesApi';
-import { useSearchQueries } from '@/app/components/PageContainer/hooks/useSearchQueries';
+import { useArticlesApi } from '@/app/container/hooks/useArticlesApi';
+import { useSearchQueries } from '@/app/container/hooks/useSearchQueries';
 import { MemorizedSearchBar } from '@/components/SearchBar';
 import { NYTResponse } from '@/interface/nyt';
 
