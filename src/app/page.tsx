@@ -8,10 +8,10 @@ export default async function Home({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const { q, fq } = searchParams;
-  const queryQ = q ? `&q=${q}` : '';
-  const queryFq = fq ? `&fq=${fq}` : '';
+  const searchQuery = q ? `&q=${q}` : '';
+  const filterQuery = fq ? `&fq=${fq}` : '';
   const fetchResponse = await fetch(
-    `${BASE_URL}${API_PATH}?api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}${queryQ}${queryFq}`
+    `${BASE_URL}${API_PATH}?api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}${searchQuery}${filterQuery}`
   );
   const data = await fetchResponse.json();
   const { response } = data as NYTApiResponse;
