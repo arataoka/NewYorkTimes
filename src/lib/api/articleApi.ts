@@ -15,6 +15,7 @@ export const articlesApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
   }),
+  tagTypes: ['Articles'],
   endpoints: (builder) => ({
     searchArticles: builder.query<NYTApiResponse, ArticlesQuery>({
       query: ({ q, fq }) => ({
@@ -33,6 +34,8 @@ export const articlesApi = createApi({
               : `An unknown error occurred. Status Code : ${error.status}`,
         };
       },
+      providesTags: (result, error, { q, fq }) =>
+        result ? [{ type: 'Articles', id: `${q}-${fq}` }] : [], // タグの提供
     }),
   }),
 });
